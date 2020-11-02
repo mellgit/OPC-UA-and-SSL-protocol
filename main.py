@@ -8,7 +8,7 @@ import keeping_the_list as keep_l
 def main():
     ip_port = input('enter "ip:port">')
     try:
-        url = str("opc.tcp://"+ip_port) # server address 
+        url = str("opc.tcp://"+ip_port) # server address "opc.tcp://ip:port"
         client = Client(url)  # customer creation
         client.connect_socket()
         client.send_hello()
@@ -35,6 +35,7 @@ def main():
         client.disconnect_socket()
 
         os._exit(1)
+        
     except Exception as exp:
         print(exp)
         os._exit(1)

@@ -11,16 +11,20 @@ def get_endpoint_url(client):
     
 
 def get_server_certificate_x509():
-    print(f"\n\nServerCertificate")
+    print(f"\n\nServerCertificate_x509")
     
-    file_name = r"C:\opc_ua_connect\version_3\client_v1\cert.pem"
+    # файл в котором находится сертификат
+    file_name = r"C:\path_to_file"
 
-    cert_decode = ssl.get_server_certificate(('127.0.0.1', 443,))
+    # получение сертификата
+    cert_decode = ssl.get_server_certificate(('ip_address_device', 443,))
 
+    # запись сертификата в файл
     with open(file_name, "wb") as cert_file1:
         cert_decode = bytes([ord(char) for char in cert_decode])
         data = cert_file1.write(cert_decode)
- 
+    
+    # чтение из файла в байтовой строке
     with open(file_name, "rb") as cert_file:
         pem_data = [line.strip() for line in cert_file.readlines()]
         begin = pem_data[0]
@@ -55,8 +59,8 @@ def get_server_certificate_x509():
     
 
 def get_server_certificate_subprocess():
-    print(f"\n\nServerCertificate")
-    cmd = "keytool -printcert -sslserver 127.0.0.1:443"
+    print(f"\n\nServerCertificate_subprocess")
+    cmd = "keytool -printcert -sslserver 192.168.1.77:443"
     cert = subprocess.getoutput(cmd)
     print(cert)
 

@@ -1,32 +1,20 @@
 # список сервера и что в нем находится
 def get_server(client):
     print(f"\n\nServer")
-    parameters_Server = [
-        client.get_endpoints()[0].Server.ProductUri,
-        client.get_endpoints()[0].Server.ApplicationUri,
-        client.get_endpoints()[0].Server.ApplicationName,
-        client.get_endpoints()[0].Server.ApplicationType,
-        client.get_endpoints()[0].Server.GatewayServerUri,
-        client.get_endpoints()[0].Server.DiscoveryProfileUri,
-        client.get_endpoints()[0].Server.DiscoveryUrls
-        ]
 
-    keys = [
-        "ProductUri",
-        "ApplicationUri",
-        "ApplicationName",
-        "ApplicationType",
-        "GatewayServerUri",
-        "DiscoveryProfileUri",
-        "DiscoveryUrls",
-        ]
-
-    for i in range(len(parameters_Server)):
-        print(f"{keys[i]}: \t{parameters_Server[i]}")
+    parameters_Server = {
+        "ProductUri": client.get_endpoints()[0].Server.ProductUri,
+        "ApplicationUri": client.get_endpoints()[0].Server.ApplicationUri,
+        "ApplicationName": client.get_endpoints()[0].Server.ApplicationName,
+        "ApplicationType": client.get_endpoints()[0].Server.ApplicationType,
+        "GatewayServerUri": client.get_endpoints()[0].Server.GatewayServerUri,
+        "DiscoveryProfileUri": client.get_endpoints()[0].Server.DiscoveryProfileUri,
+        "DiscoveryUrls": client.get_endpoints()[0].Server.DiscoveryUrls
+    }
+    for key in parameters_Server:
+        print(f"{key} : {parameters_Server[key]}")
     
     
-    
-
 # список токенов и что в них находится
 def get_user_identity_tokens(client):
     print(f"\n\nUserIdentityTokens")
@@ -50,7 +38,6 @@ def get_user_identity_tokens(client):
         "SecurityPolicyUri",
         ]
 
-
     even, odd, i = 0, 1, 0
 
     while odd<=len(parameters_UserIdentityTokens):
@@ -59,5 +46,3 @@ def get_user_identity_tokens(client):
         i+=1
         odd+=2
         even+=2    
-    
-
