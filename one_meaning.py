@@ -60,7 +60,7 @@ def get_server_certificate_x509():
 
 def get_server_certificate_subprocess():
     print(f"\n\nServerCertificate_subprocess")
-    cmd = "keytool -printcert -sslserver 192.168.1.77:443"
+    cmd = "keytool -printcert -sslserver 'ip_address':443"
     cert = subprocess.getoutput(cmd)
     print(cert)
 
